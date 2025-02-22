@@ -36,7 +36,7 @@ jobs:
       with:
         target_sync_branch: master
         upstream_sync_branch: master
-        upstream_sync_repo: OpenDAoC/OpenDAoC-Database
+        upstream_sync_repo: gz-42/devops-OpenDAoC-Database
 
         # Set test_mode true during manual dispatch to run tests instead of the true action!!
         test_mode: ${{ inputs.sync_test_mode }}
