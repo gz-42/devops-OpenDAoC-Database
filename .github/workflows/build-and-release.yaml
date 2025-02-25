@@ -104,3 +104,27 @@ jobs:
           tag_name: '${{ steps.set_version.outputs.version }}'
           token: '${{ secrets.GITHUB_TOKEN }}'
           body_path: './release_notes.txt'
+          
+      - name: Clone update and Push
+        uses: actions/checkout@v4
+      - name: Setup SSH
+        uses: MrSquaare/ssh-setup-action@v3
+        with:
+            host: github.com
+            private-key: ${{ secrets.PRIVATE_KEY_GITHUB }}
+          
+      - name: Update Manifest
+        run: |
+          rm -Rf *
+          git clone git@github.com:gz-42/devops-opendaoc.git
+          cd devops-opendaoc/manifests/database/
+          sed -i "s+ghcr.io/gz-42/opendaoc-database.*+ghcr.io/gz-42/opendaoc-database:${{ steps.set_version.outputs.version }}+g" gameserver-deployment.yaml
+    
+      - name: Commit and push changes
+        run: |
+          cd devops-opendaoc
+          git config --global user.name "Keo"
+          git config --global user.email "keo@gz-42.com"
+          git add -A
+          git commit -m "tag image update with ${{ steps.set_version.outputs.version }}"
+          git push origin master
