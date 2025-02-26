@@ -62,5 +62,5 @@ jobs:
     needs: sync_latest_from_upstream
     name: build-and-release
     uses: gz-42/OpenDAoC-Database/.github/workflows/build-and-release.yaml@master
-    with:
+    secrets:
       PRIVATE_KEY_GITHUB: ${{ secrets.PRIVATE_KEY_GITHUB }}
