@@ -61,6 +61,4 @@ jobs:
   build-and-release:
     needs: sync_latest_from_upstream
     name: build-and-release
-    runs-on: ubuntu-latest
-    steps:
-    - uses: gz-42/OpenDAoC-Database/.github/workflows/build-and-release.yaml@master
+    uses: gz-42/OpenDAoC-Database/.github/workflows/build-and-release.yaml@master
