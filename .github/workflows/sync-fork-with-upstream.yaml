@@ -49,7 +49,7 @@ jobs:
     # Call build and release workflow if we have new commits
     - name: Call build and release workflow
       if: steps.sync.outputs.has_new_commits == 'true'
-      uses: ./.github/workflows/build-and-release.yaml
+      uses: gz-42/OpenDAoC-Database/.github/workflows/build-and-release.yaml@master
     
     - name: No new commits
       if: steps.sync.outputs.has_new_commits == 'false'
