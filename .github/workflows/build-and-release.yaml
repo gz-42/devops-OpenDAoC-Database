@@ -2,7 +2,7 @@ name: 'Build and push Docker image, then create release'
 on:
   workflow_call:
     secrets:
-      private_key:
+      PRIVATE_KEY_GITHUB:
         required: true
   
 jobs:
