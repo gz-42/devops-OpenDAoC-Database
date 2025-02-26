@@ -118,7 +118,7 @@ jobs:
           rm -Rf *
           git clone git@github.com:gz-42/devops-opendaoc.git
           cd devops-opendaoc/manifests/database/
-          sed -i "s+ghcr.io/gz-42/opendaoc-database.*+ghcr.io/gz-42/opendaoc-database:${{ steps.set_version.outputs.version }}+g" db-statefullset.yaml
+          sed -i "s+ghcr.io/gz-42/opendaoc-database.*+ghcr.io/gz-42/opendaoc-database:${{ steps.set_version.outputs.version }}+g" db-statefulset.yaml
     
       - name: Commit and push changes
         run: |
